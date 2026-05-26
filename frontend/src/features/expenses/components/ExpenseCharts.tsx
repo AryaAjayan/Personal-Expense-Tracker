@@ -30,7 +30,7 @@ export function ExpenseCharts({ expenses }: ExpenseChartsProps) {
 
     // 1. Process Category Data for Pie Chart
     const categoryTotals = expenses.reduce((acc, expense) => {
-      acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
+      acc[expense.category] = (acc[expense.category] || 0) + Number(expense.amount);
       return acc;
     }, {} as Record<string, number>);
 
@@ -41,7 +41,7 @@ export function ExpenseCharts({ expenses }: ExpenseChartsProps) {
     // 2. Process Daily Trend Data for Bar Chart
     const dailyTotals = expenses.reduce((acc, expense) => {
       const date = expense.date; // YYYY-MM-DD
-      acc[date] = (acc[date] || 0) + expense.amount;
+      acc[date] = (acc[date] || 0) + Number(expense.amount);
       return acc;
     }, {} as Record<string, number>);
 
@@ -82,7 +82,7 @@ export function ExpenseCharts({ expenses }: ExpenseChartsProps) {
                 ))}
               </Pie>
               <Tooltip 
-                formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Total']}
+                formatter={(value: any) => [`₹${Number(value).toFixed(2)}`, 'Total']}
                 contentStyle={{ backgroundColor: 'var(--color-card)', borderColor: 'var(--color-border)', borderRadius: '0.5rem', color: 'var(--color-foreground)' }}
                 itemStyle={{ color: 'var(--color-foreground)' }}
               />
@@ -113,7 +113,7 @@ export function ExpenseCharts({ expenses }: ExpenseChartsProps) {
                 tickFormatter={(value) => `₹${value}`}
               />
               <Tooltip 
-                formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Spent']}
+                formatter={(value: any) => [`₹${Number(value).toFixed(2)}`, 'Spent']}
                 cursor={{ fill: 'var(--color-muted)', opacity: 0.2 }}
                 contentStyle={{ backgroundColor: 'var(--color-card)', borderColor: 'var(--color-border)', borderRadius: '0.5rem', color: 'var(--color-foreground)' }}
               />
