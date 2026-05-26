@@ -4,7 +4,7 @@ export interface Expense {
   amount: number;
   category: string;
   date: string;
-  note?: string;
+  note?: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -14,7 +14,7 @@ export interface ExpenseCreate {
   amount: number;
   category: string;
   date: string;
-  note?: string;
+  note?: string | null;
 }
 
 export interface ExpenseUpdate extends Partial<ExpenseCreate> {}

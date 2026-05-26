@@ -97,7 +97,7 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
         ...formData,
         amount: parseFloat(formData.amount) || 0,
         // Send null instead of empty string for optional note field
-        note: formData.note.trim() || undefined,
+        note: formData.note.trim() || null,
       };
       await onSubmit(payload);
       onClose();
