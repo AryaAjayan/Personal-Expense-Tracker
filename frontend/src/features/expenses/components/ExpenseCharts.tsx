@@ -71,11 +71,12 @@ export function ExpenseCharts({ expenses }: ExpenseChartsProps) {
                 data={pieData}
                 cx="50%"
                 cy="50%"
-                innerRadius={60}
-                outerRadius={80}
+                innerRadius={80}
+                outerRadius={110}
                 paddingAngle={5}
                 dataKey="value"
                 stroke="none"
+                isAnimationActive={false}
               >
                 {pieData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
