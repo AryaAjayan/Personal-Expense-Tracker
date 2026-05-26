@@ -63,7 +63,7 @@ export function ExpenseTable({ expenses, onEdit, onDelete, isLoading }: ExpenseT
                 </span>
               </td>
               <td className="px-6 py-4 font-bold text-foreground text-base">
-                ${Number(expense.amount).toFixed(2)}
+                ₹{Number(expense.amount).toFixed(2)}
               </td>
               {(onEdit || onDelete) && (
                 <td className="px-6 py-4 text-right space-x-2">

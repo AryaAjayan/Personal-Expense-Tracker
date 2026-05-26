@@ -35,7 +35,7 @@ export function ExpenseSummaryCards({ summary, isLoading }: ExpenseSummaryCardsP
           </div>
         </div>
         <div className="text-4xl font-extrabold text-foreground tracking-tight">
-          ${Number(summary?.total_spent || 0).toFixed(2)}
+          ₹{Number(summary?.total_spent || 0).toFixed(2)}
         </div>
       </div>
 
@@ -51,7 +51,7 @@ export function ExpenseSummaryCards({ summary, isLoading }: ExpenseSummaryCardsP
           {topCategory.category}
         </div>
         <div className="text-sm font-medium text-muted-foreground">
-          ${Number(topCategory.total).toFixed(2)} spent
+          ₹{Number(topCategory.total).toFixed(2)} spent
         </div>
       </div>
 

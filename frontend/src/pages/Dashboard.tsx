@@ -6,6 +6,7 @@ import { ThemeToggle } from '../components/ui/ThemeToggle';
 import { ExpenseTable } from '../features/expenses/components/ExpenseTable';
 import { ExpenseFilters } from '../features/expenses/components/ExpenseFilters';
 import { ExpenseSummaryCards } from '../features/expenses/components/ExpenseSummaryCards';
+import { ExpenseCharts } from '../features/expenses/components/ExpenseCharts';
 import { ExpenseFormModal } from '../features/expenses/components/ExpenseFormModal';
 import { 
   useExpenses, 
@@ -107,6 +108,11 @@ export function Dashboard() {
           }} 
         />
 
+        {/* Global Expense Charts */}
+        <div className="mt-8">
+          <ExpenseCharts expenses={expensesData?.items || []} />
+        </div>
+
         <div className="bg-card border border-border rounded-lg overflow-hidden">
           <ExpenseTable 
             expenses={expensesData?.items || []} 
@@ -165,7 +171,7 @@ export function Dashboard() {
                   >
                     <div>
                       <div className="text-sm font-medium text-muted-foreground mb-1 group-hover:text-foreground transition-colors">{monthName}</div>
-                      <div className="text-3xl font-extrabold text-foreground">${Number(item.total).toFixed(2)}</div>
+                      <div className="text-3xl font-extrabold text-foreground">₹{Number(item.total).toFixed(2)}</div>
                     </div>
                     <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between">
                       <span className="text-sm font-semibold text-primary group-hover:text-purple-500 transition-colors">View Details</span>

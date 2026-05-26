@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useExpenseSummary, useExpenses } from '../features/expenses/api';
 import { ExpenseTable } from '../features/expenses/components/ExpenseTable';
+import { ExpenseCharts } from '../features/expenses/components/ExpenseCharts';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
 
 export function MonthlySummaryPage() {
@@ -59,7 +60,7 @@ export function MonthlySummaryPage() {
             <div className="mb-8">
               <h2 className="text-sm font-medium text-muted-foreground mb-1">Total Spent</h2>
               <div className="text-4xl font-bold text-foreground">
-                ${Number(data?.total_spent || 0).toFixed(2)}
+                ₹{Number(data?.total_spent || 0).toFixed(2)}
               </div>
             </div>
             
@@ -70,7 +71,7 @@ export function MonthlySummaryPage() {
                 {data.category_breakdown.sort((a, b) => b.total - a.total).map((item) => (
                   <li key={item.category} className="flex justify-between items-center p-4 bg-muted/30 rounded-lg border border-border">
                     <span className="font-medium text-foreground">{item.category}</span>
-                    <span className="font-semibold text-primary">${Number(item.total).toFixed(2)}</span>
+                    <span className="font-semibold text-primary">₹{Number(item.total).toFixed(2)}</span>
                   </li>
                 ))}
               </ul>
@@ -80,6 +81,11 @@ export function MonthlySummaryPage() {
                 No expenses recorded for this month.
               </div>
             )}
+            
+            {/* Monthly Expense Charts */}
+            <div className="mt-12">
+              <ExpenseCharts expenses={expensesData?.items || []} />
+            </div>
             
             <h3 className="text-lg font-semibold mb-4 border-b border-border pb-2 mt-12">Expense List</h3>
             <div className="bg-card border border-border rounded-lg overflow-hidden">

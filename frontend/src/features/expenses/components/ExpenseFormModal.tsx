@@ -137,7 +137,7 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Amount ($)</label>
+            <label className="block text-sm font-medium mb-1">Amount (₹)</label>
             <input
               type="number"
               name="amount"
