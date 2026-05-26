@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Personal Expense Tracker"
+    PROJECT_NAME: str = "SpendStack"
     API_V1_STR: str = "/api"
     DATABASE_URL: str = "sqlite:///./expenses.db"
 

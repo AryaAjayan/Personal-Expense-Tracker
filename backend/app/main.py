@@ -27,4 +27,4 @@ app.include_router(expenses_router, prefix=f"{settings.API_V1_STR}/expenses", ta
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to Personal Expense Tracker API"}
+    return {"message": "Welcome to SpendStack API"}

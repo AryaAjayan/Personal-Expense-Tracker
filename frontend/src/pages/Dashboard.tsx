@@ -84,7 +84,7 @@ export function Dashboard() {
             <div className="w-8 h-8 bg-gradient-to-br from-primary to-purple-500 rounded-lg flex items-center justify-center text-primary-foreground font-bold shadow-md shadow-primary/20">
               💰
             </div>
-            <h1 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 tracking-tight">ExpenseTracker</h1>
+            <h1 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 tracking-tight">SpendStack</h1>
           </div>
           <div className="flex items-center space-x-2 sm:space-x-4">
             <ThemeToggle />

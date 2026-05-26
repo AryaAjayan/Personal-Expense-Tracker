@@ -1,4 +1,4 @@
-# Personal Expense Tracker
+# SpendStack
 
 A modern, full-stack web application designed to help you track, categorize, and manage your daily expenses effortlessly. Built with a React frontend and a FastAPI (Python) backend, the application features a stunning glassmorphic interface, dynamic data visualization, and comprehensive monthly reporting.
 
