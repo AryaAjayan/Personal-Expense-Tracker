@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useExpenseSummary, useExpenses } from '../features/expenses/api';
 import { ExpenseTable } from '../features/expenses/components/ExpenseTable';
+import { ThemeToggle } from '../components/ui/ThemeToggle';
 
 export function MonthlySummaryPage() {
   const { month } = useParams<{ month: string }>(); // month format: YYYY-MM
@@ -35,11 +36,12 @@ export function MonthlySummaryPage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-card/50 backdrop-blur-md sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft size={20} className="mr-2" />
             Back to Dashboard
           </Link>
+          <ThemeToggle />
         </div>
       </header>
 

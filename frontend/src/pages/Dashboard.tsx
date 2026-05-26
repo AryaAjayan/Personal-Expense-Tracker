@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { ThemeToggle } from '../components/ui/ThemeToggle';
 import { ExpenseTable } from '../features/expenses/components/ExpenseTable';
 import { ExpenseFilters } from '../features/expenses/components/ExpenseFilters';
 import { ExpenseSummaryCards } from '../features/expenses/components/ExpenseSummaryCards';
@@ -84,10 +85,13 @@ export function Dashboard() {
             </div>
             <h1 className="text-xl font-bold text-foreground">ExpenseTracker</h1>
           </div>
-          <Button onClick={handleOpenAddModal} size="sm" className="gap-2">
-            <Plus size={16} />
-            <span className="hidden sm:inline">Add Expense</span>
-          </Button>
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <ThemeToggle />
+            <Button onClick={handleOpenAddModal} size="sm" className="gap-2">
+              <Plus size={16} />
+              <span className="hidden sm:inline">Add Expense</span>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -157,10 +161,16 @@ export function Dashboard() {
                   <Link 
                     key={item.month} 
                     to={`/summary/${item.month}`}
-                    className="flex-shrink-0 snap-start bg-card border border-border p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:border-primary/50 min-w-[200px] group"
+                    className="flex-shrink-0 snap-start bg-card border border-border p-5 rounded-xl shadow-sm hover:shadow-md transition-all hover:border-primary/50 min-w-[240px] group flex flex-col justify-between cursor-pointer"
                   >
-                    <div className="text-sm font-medium text-muted-foreground mb-1 group-hover:text-primary transition-colors">{monthName}</div>
-                    <div className="text-xl font-bold text-foreground">${Number(item.total).toFixed(2)}</div>
+                    <div>
+                      <div className="text-sm font-medium text-muted-foreground mb-1">{monthName}</div>
+                      <div className="text-2xl font-bold text-foreground">${Number(item.total).toFixed(2)}</div>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+                      <span className="text-sm font-medium text-primary group-hover:text-primary/80">View Details</span>
+                      <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
                   </Link>
                 );
               })}
