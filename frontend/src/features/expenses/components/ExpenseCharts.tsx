@@ -24,6 +24,10 @@ const COLORS = ['#6366f1', '#a855f7', '#ec4899', '#f43f5e', '#f97316', '#eab308'
 export function ExpenseCharts({ expenses }: ExpenseChartsProps) {
   // Memoize chart data generation for performance
   const { pieData, barData } = useMemo(() => {
+    if (!expenses || !Array.isArray(expenses) || expenses.length === 0) {
+      return { pieData: [], barData: [] };
+    }
+
     // 1. Process Category Data for Pie Chart
     const categoryTotals = expenses.reduce((acc, expense) => {
       acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
