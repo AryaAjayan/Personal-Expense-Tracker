@@ -32,20 +32,20 @@ export function ExpenseTable({ expenses, onEdit, onDelete, isLoading }: ExpenseT
   }
 
   return (
-    <div className="w-full bg-card border border-border rounded-lg overflow-x-auto">
+    <div className="w-full glass rounded-2xl overflow-x-auto shadow-sm">
       <table className="w-full text-sm text-left">
-        <thead className="text-xs text-muted-foreground uppercase bg-muted/50 border-b border-border">
+        <thead className="text-xs text-muted-foreground uppercase bg-muted/30 border-b border-border/50">
           <tr>
-            <th className="px-6 py-4 font-medium">Date</th>
-            <th className="px-6 py-4 font-medium">Title</th>
-            <th className="px-6 py-4 font-medium">Category</th>
-            <th className="px-6 py-4 font-medium">Amount</th>
-            {(onEdit || onDelete) && <th className="px-6 py-4 font-medium text-right">Actions</th>}
+            <th className="px-6 py-4 font-semibold tracking-wider">Date</th>
+            <th className="px-6 py-4 font-semibold tracking-wider">Title</th>
+            <th className="px-6 py-4 font-semibold tracking-wider">Category</th>
+            <th className="px-6 py-4 font-semibold tracking-wider">Amount</th>
+            {(onEdit || onDelete) && <th className="px-6 py-4 font-semibold tracking-wider text-right">Actions</th>}
           </tr>
         </thead>
-        <tbody className="divide-y divide-border">
+        <tbody className="divide-y divide-border/50">
           {expenses.map((expense) => (
-            <tr key={expense.id} className="hover:bg-muted/30 transition-colors">
+            <tr key={expense.id} className="hover:bg-muted/40 transition-all duration-200 group">
               <td className="px-6 py-4 whitespace-nowrap">
                 {format(new Date(expense.date), 'MMM dd, yyyy')}
               </td>
@@ -58,11 +58,11 @@ export function ExpenseTable({ expenses, onEdit, onDelete, isLoading }: ExpenseT
                 )}
               </td>
               <td className="px-6 py-4">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary/15 text-primary border border-primary/30 shadow-sm shadow-primary/10">
                   {expense.category}
                 </span>
               </td>
-              <td className="px-6 py-4 font-semibold text-foreground">
+              <td className="px-6 py-4 font-bold text-foreground text-base">
                 ${Number(expense.amount).toFixed(2)}
               </td>
               {(onEdit || onDelete) && (

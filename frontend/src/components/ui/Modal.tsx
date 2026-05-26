@@ -23,9 +23,9 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-0">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 sm:p-0">
       <div 
-        className="w-full max-w-md bg-card border border-border shadow-lg rounded-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+        className="w-full max-w-md glass shadow-2xl rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-300"
         role="dialog"
       >
         <div className="flex justify-between items-center p-4 sm:p-6 border-b border-border">

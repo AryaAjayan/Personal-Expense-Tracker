@@ -128,7 +128,7 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
             name="title"
             required
             maxLength={100}
-            className="w-full bg-background border border-input rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full bg-background/50 border border-input rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200"
             value={formData.title}
             onChange={handleChange}
             placeholder="E.g., Groceries"
@@ -144,7 +144,7 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
               required
               min="0.01"
               step="0.01"
-              className="w-full bg-background border border-input rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full bg-background/50 border border-input rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200"
               value={formData.amount}
               onChange={handleChange}
               placeholder="0.00"
@@ -157,7 +157,7 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
               type="date"
               name="date"
               required
-              className="w-full bg-background border border-input rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full bg-background/50 border border-input rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200"
               value={formData.date}
               onChange={handleChange}
             />
@@ -172,7 +172,7 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
             required
             list="categories"
             maxLength={50}
-            className="w-full bg-background border border-input rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full bg-background/50 border border-input rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200"
             value={formData.category}
             onChange={handleChange}
             placeholder="Select or type a category"
@@ -187,7 +187,7 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
           <textarea
             name="note"
             rows={3}
-            className="w-full bg-background border border-input rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+            className="w-full bg-background/50 border border-input rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none"
             value={formData.note}
             onChange={handleChange}
             placeholder="Any additional details..."

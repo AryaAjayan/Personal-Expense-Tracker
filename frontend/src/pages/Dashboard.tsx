@@ -77,13 +77,13 @@ export function Dashboard() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-md sticky top-0 z-10">
+      <header className="border-b border-border glass sticky top-0 z-10 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold">
+            <div className="w-8 h-8 bg-gradient-to-br from-primary to-purple-500 rounded-lg flex items-center justify-center text-primary-foreground font-bold shadow-md shadow-primary/20">
               💰
             </div>
-            <h1 className="text-xl font-bold text-foreground">ExpenseTracker</h1>
+            <h1 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 tracking-tight">ExpenseTracker</h1>
           </div>
           <div className="flex items-center space-x-2 sm:space-x-4">
             <ThemeToggle />
@@ -161,15 +161,15 @@ export function Dashboard() {
                   <Link 
                     key={item.month} 
                     to={`/summary/${item.month}`}
-                    className="flex-shrink-0 snap-start bg-card border border-border p-5 rounded-xl shadow-sm hover:shadow-md transition-all hover:border-primary/50 min-w-[240px] group flex flex-col justify-between cursor-pointer"
+                    className="flex-shrink-0 snap-start glass border border-border/50 p-5 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 min-w-[240px] group flex flex-col justify-between cursor-pointer"
                   >
                     <div>
-                      <div className="text-sm font-medium text-muted-foreground mb-1">{monthName}</div>
-                      <div className="text-2xl font-bold text-foreground">${Number(item.total).toFixed(2)}</div>
+                      <div className="text-sm font-medium text-muted-foreground mb-1 group-hover:text-foreground transition-colors">{monthName}</div>
+                      <div className="text-3xl font-extrabold text-foreground">${Number(item.total).toFixed(2)}</div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
-                      <span className="text-sm font-medium text-primary group-hover:text-primary/80">View Details</span>
-                      <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                    <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between">
+                      <span className="text-sm font-semibold text-primary group-hover:text-purple-500 transition-colors">View Details</span>
+                      <span className="text-primary group-hover:text-purple-500 group-hover:translate-x-2 transition-all duration-300">→</span>
                     </div>
                   </Link>
                 );

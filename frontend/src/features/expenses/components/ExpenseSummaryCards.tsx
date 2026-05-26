@@ -27,43 +27,43 @@ export function ExpenseSummaryCards({ summary, isLoading }: ExpenseSummaryCardsP
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       {/* Total Spent Card */}
-      <div className="bg-card border border-border p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+      <div className="glass p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-medium text-muted-foreground">Total Spent</h3>
-          <div className="p-2 bg-primary/10 rounded-lg text-primary">
-            <DollarSign size={20} />
+          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Total Spent</h3>
+          <div className="p-2.5 bg-primary/20 rounded-xl text-primary shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+            <DollarSign size={20} className="drop-shadow-md" />
           </div>
         </div>
-        <div className="text-3xl font-bold text-foreground">
+        <div className="text-4xl font-extrabold text-foreground tracking-tight">
           ${Number(summary?.total_spent || 0).toFixed(2)}
         </div>
       </div>
 
       {/* Top Category Card */}
-      <div className="bg-card border border-border p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+      <div className="glass p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-medium text-muted-foreground">Top Category</h3>
-          <div className="p-2 bg-indigo-500/10 rounded-lg text-indigo-500">
-            <PieChart size={20} />
+          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Top Category</h3>
+          <div className="p-2.5 bg-purple-500/20 rounded-xl text-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+            <PieChart size={20} className="drop-shadow-md" />
           </div>
         </div>
-        <div className="text-xl font-semibold text-foreground mb-1">
+        <div className="text-2xl font-bold text-foreground mb-1 tracking-tight">
           {topCategory.category}
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm font-medium text-muted-foreground">
           ${Number(topCategory.total).toFixed(2)} spent
         </div>
       </div>
 
       {/* Total Transactions (Placeholder logic based on breakdown length for aesthetics, could be updated with real count if API provided it) */}
-      <div className="bg-card border border-border p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+      <div className="glass p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-medium text-muted-foreground">Categories Used</h3>
-          <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
-            <Activity size={20} />
+          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Categories Used</h3>
+          <div className="p-2.5 bg-emerald-500/20 rounded-xl text-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+            <Activity size={20} className="drop-shadow-md" />
           </div>
         </div>
-        <div className="text-3xl font-bold text-foreground">
+        <div className="text-4xl font-extrabold text-foreground tracking-tight">
           {summary?.category_breakdown?.length || 0}
         </div>
       </div>
