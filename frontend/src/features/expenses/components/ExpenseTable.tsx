@@ -5,8 +5,8 @@ import { Button } from '../../../components/ui/Button';
 
 interface ExpenseTableProps {
   expenses: Expense[];
-  onEdit: (expense: Expense) => void;
-  onDelete: (id: number) => void;
+  onEdit?: (expense: Expense) => void;
+  onDelete?: (id: number) => void;
   isLoading?: boolean;
 }
 
@@ -40,7 +40,7 @@ export function ExpenseTable({ expenses, onEdit, onDelete, isLoading }: ExpenseT
             <th className="px-6 py-4 font-medium">Title</th>
             <th className="px-6 py-4 font-medium">Category</th>
             <th className="px-6 py-4 font-medium">Amount</th>
-            <th className="px-6 py-4 font-medium text-right">Actions</th>
+            {(onEdit || onDelete) && <th className="px-6 py-4 font-medium text-right">Actions</th>}
           </tr>
         </thead>
         <tbody className="divide-y divide-border">
@@ -65,24 +65,30 @@ export function ExpenseTable({ expenses, onEdit, onDelete, isLoading }: ExpenseT
               <td className="px-6 py-4 font-semibold text-foreground">
                 ${Number(expense.amount).toFixed(2)}
               </td>
-              <td className="px-6 py-4 text-right space-x-2">
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="h-8 w-8 p-0 rounded-full"
-                  onClick={() => onEdit(expense)}
-                >
-                  <Pencil size={14} />
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="h-8 w-8 p-0 rounded-full text-destructive hover:text-destructive hover:bg-destructive/10"
-                  onClick={() => onDelete(expense.id)}
-                >
-                  <Trash2 size={14} />
-                </Button>
-              </td>
+              {(onEdit || onDelete) && (
+                <td className="px-6 py-4 text-right space-x-2">
+                  {onEdit && (
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-8 w-8 p-0 rounded-full"
+                      onClick={() => onEdit(expense)}
+                    >
+                      <Pencil size={14} />
+                    </Button>
+                  )}
+                  {onDelete && (
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-8 w-8 p-0 rounded-full text-destructive hover:text-destructive hover:bg-destructive/10"
+                      onClick={() => onDelete(expense.id)}
+                    >
+                      <Trash2 size={14} />
+                    </Button>
+                  )}
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { useExpenseSummary } from '../features/expenses/api';
+import { useExpenseSummary, useExpenses } from '../features/expenses/api';
+import { ExpenseTable } from '../features/expenses/components/ExpenseTable';
 
 export function MonthlySummaryPage() {
   const { month } = useParams<{ month: string }>(); // month format: YYYY-MM
@@ -18,6 +19,13 @@ export function MonthlySummaryPage() {
   const endDate = `${year}-${monthStr}-${lastDay}`;
 
   const { data, isLoading } = useExpenseSummary({
+    start_date: startDate,
+    end_date: endDate
+  });
+
+  const { data: expensesData, isLoading: isLoadingExpenses } = useExpenses({
+    page: 1,
+    size: 100, // Fetch up to 100 expenses for the month
     start_date: startDate,
     end_date: endDate
   });
@@ -70,6 +78,15 @@ export function MonthlySummaryPage() {
                 No expenses recorded for this month.
               </div>
             )}
+            
+            <h3 className="text-lg font-semibold mb-4 border-b border-border pb-2 mt-12">Expense List</h3>
+            <div className="bg-card border border-border rounded-lg overflow-hidden">
+              <ExpenseTable 
+                expenses={expensesData?.items || []} 
+                isLoading={isLoadingExpenses} 
+                // Omitting onEdit and onDelete for read-only view
+              />
+            </div>
           </div>
         )}
       </main>

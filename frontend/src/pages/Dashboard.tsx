@@ -103,37 +103,6 @@ export function Dashboard() {
           }} 
         />
 
-        {/* Monthly Summaries Section */}
-        <div className="mb-8">
-          <h2 className="text-xl font-bold text-foreground mb-4">Monthly Summaries</h2>
-          {isLoadingMonthlyList ? (
-            <div className="flex space-x-4">
-              {[1, 2, 3].map(i => (
-                <div key={i} className="w-48 h-16 bg-card border border-border rounded-lg animate-pulse" />
-              ))}
-            </div>
-          ) : monthlyListData && monthlyListData.length > 0 ? (
-            <div className="flex overflow-x-auto pb-4 space-x-4 snap-x">
-              {monthlyListData.map(item => {
-                const dateObj = new Date(item.month + '-01');
-                const monthName = dateObj.toLocaleString('default', { month: 'long', year: 'numeric' });
-                return (
-                  <Link 
-                    key={item.month} 
-                    to={`/summary/${item.month}`}
-                    className="flex-shrink-0 snap-start bg-card border border-border p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:border-primary/50 min-w-[200px] group"
-                  >
-                    <div className="text-sm font-medium text-muted-foreground mb-1 group-hover:text-primary transition-colors">{monthName}</div>
-                    <div className="text-xl font-bold text-foreground">${Number(item.total).toFixed(2)}</div>
-                  </Link>
-                );
-              })}
-            </div>
-          ) : (
-            <p className="text-muted-foreground text-sm">No monthly summaries available.</p>
-          )}
-        </div>
-
         <div className="bg-card border border-border rounded-lg overflow-hidden">
           <ExpenseTable 
             expenses={expensesData?.items || []} 
@@ -167,6 +136,37 @@ export function Dashboard() {
                 </Button>
               </div>
             </div>
+          )}
+        </div>
+
+        {/* Monthly Summaries Section */}
+        <div className="mt-12 mb-8">
+          <h2 className="text-xl font-bold text-foreground mb-4">Monthly Summaries</h2>
+          {isLoadingMonthlyList ? (
+            <div className="flex space-x-4">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="w-48 h-16 bg-card border border-border rounded-lg animate-pulse" />
+              ))}
+            </div>
+          ) : monthlyListData && monthlyListData.length > 0 ? (
+            <div className="flex overflow-x-auto pb-4 space-x-4 snap-x">
+              {monthlyListData.map(item => {
+                const dateObj = new Date(item.month + '-01');
+                const monthName = dateObj.toLocaleString('default', { month: 'long', year: 'numeric' });
+                return (
+                  <Link 
+                    key={item.month} 
+                    to={`/summary/${item.month}`}
+                    className="flex-shrink-0 snap-start bg-card border border-border p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:border-primary/50 min-w-[200px] group"
+                  >
+                    <div className="text-sm font-medium text-muted-foreground mb-1 group-hover:text-primary transition-colors">{monthName}</div>
+                    <div className="text-xl font-bold text-foreground">${Number(item.total).toFixed(2)}</div>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="text-muted-foreground text-sm">No monthly summaries available.</p>
           )}
         </div>
       </main>
