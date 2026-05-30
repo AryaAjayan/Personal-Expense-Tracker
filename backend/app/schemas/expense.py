@@ -4,7 +4,7 @@ from typing import Optional, List
 from decimal import Decimal
 
 class ExpenseBase(BaseModel):
-    title: str = Field(..., max_length=100, pattern=r'^[^0-9]*$')
+    title: str = Field(..., max_length=100, pattern=r'^[a-zA-Z\s]*$')
     amount: Decimal = Field(..., gt=0)
     category: str = Field(..., max_length=50)
     date: DateType
@@ -18,7 +18,7 @@ class ExpenseUpdate(BaseModel):
     Uses DateType alias to prevent field name 'date' from shadowing
     the datetime.date type in Pydantic's annotation resolution.
     """
-    title: Optional[str] = Field(None, max_length=100, pattern=r'^[^0-9]*$')
+    title: Optional[str] = Field(None, max_length=100, pattern=r'^[a-zA-Z\s]*$')
     amount: Optional[Decimal] = Field(None, gt=0)
     category: Optional[str] = Field(None, max_length=50)
     date: Optional[DateType] = None

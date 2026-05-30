@@ -83,9 +83,9 @@ export function ExpenseFormModal({ isOpen, onClose, onSubmit, initialData, categ
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     let { name, value } = e.target;
 
-    // Prevent numbers in the title field
+    // Prevent numbers and special characters in the title field
     if (name === 'title') {
-      value = value.replace(/[0-9]/g, '');
+      value = value.replace(/[^a-zA-Z\s]/g, '');
     }
 
     setFormData((prev: any) => ({
